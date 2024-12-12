@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Strona Layout</title>
+    <style>
+        .menu-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+
+        .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .rectangle {
+            width: 100px;
+            height: 50px;
+        }
+
+        .brown { background-color: brown; }
+        .blue { background-color: blue; }
+        .yellow { background-color: yellow; }
+        .green { background-color: green; }
+        .red { background-color: red; }
+
+        /* Stylizacja stopki */
+        .footer {
+            text-align: center;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-top: 2px solid #ccc;
+            font-size: 14px;
+        }
+        .footer .date {
+            font-style: italic;
+        }
+    </style>
+    <script>
+        function loadPage(url) {
+            document.querySelector('iframe[name="obszar_glowny"]').src = url;
+        }
+
+        // Automatyczne ustawienie aktualnej daty
+        function setDate() {
+            const currentDate = new Date();
+            const formattedDate = currentDate.toLocaleDateString('pl-PL', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            });
+            document.getElementById('current-date').textContent = formattedDate;
+        }
+    </script>
+</head>
+<body onload="setDate()">
+    <table width="65%" border="1" align="center">
+        <!-- Nagłówek -->
+        <tr>
+            <td colspan="3" align="center">
+                <b>NAGŁÓWEK</b>
+            </td>
+        </tr>
+        <!-- Główna część z trzema oknami -->
+        <tr>
+            <td width="18%" align="center">
+                <b>LEWE MENU</b>
+                <ul>
+                    <li><a href="https://zse.edu.gdansk.pl/" target="obszar_glowny">Strona ZSE</a></li>
+                    <li><a href="https://www.kuratorium.gda.pl/" target="obszar_glowny">Kuratorium</a></li>
+                    <li><a href="mojastrona.html" target="obszar_glowny">Moja Strona</a></li>
+                    <li><a href="https://terraria.fandom.com/wiki/Terraria_Wiki" target="obszar_glowny">Inna Strona</a></li>
+                </ul>
+            </td>
+            <td align="center">
+                <iframe width="650" height="420" name="obszar_glowny" src="glowny_twoje_nazwisko.html" border="0" scrolling="yes"></iframe>
+                <b>OBSZAR GŁÓWNY</b>
+            </td>
+            <td width="18%" align="center">
+                <b>PRAWE MENU</b>
+                <div class="menu-item circle brown" onclick="loadPage('plik_bochkovskyi.html')"></div>
+                <div class="menu-item rectangle blue" onclick="loadPage('tabela_bochkovskyi.html')"></div>
+                <div class="menu-item circle yellow" onclick="loadPage('formularz_bochkovskyi.html')"></div>
+                <div class="menu-item rectangle green" onclick="loadPage('poczta_bochkovskyi.html')"></div>
+                <div class="menu-item circle red" onclick="loadPage('zadania_1_6.pdf')"></div>
+            </td>
+        </tr>
+        <!-- Stopka -->
+        <tr>
+            <td colspan="3" align="center">
+                <div class="footer">
+                    <p>STOPKA - Bochkovskyi</p>
+                    <p class="date">Gdańsk, <span id="current-date">12-12-2024</span></p>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
